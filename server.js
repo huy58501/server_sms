@@ -7,17 +7,10 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = ["https://nails-and-spa.vercel.app", "https://tonyinthewild.ca"];
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("CORS not allowed"));
-    }
-  },
-  methods: ["GET", "POST"], // Specify allowed methods
-  allowedHeaders: ["Content-Type"], // Specify allowed headers
-  credentials: true, // Allow credentials (cookies, etc.)
+  origin: "*", // Allow all origins temporarily for testing
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+  credentials: true,
 };
 
 // Use CORS middleware
