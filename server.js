@@ -7,7 +7,14 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || "https://tonyinthewild.ca" || "https://nails-and-spa.vercel.app", // Use the GitHub secret or fallback to localhost
+  origin: function (origin, callback) {
+    const allowedOrigins = ["https://nails-and-spa.vercel.app", "https://tonyinthewild.ca"];
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed"));
+    }
+  },
   methods: ["GET", "POST"], // Specify allowed methods
   allowedHeaders: ["Content-Type"], // Specify allowed headers
   credentials: true, // Allow credentials (cookies, etc.)
@@ -58,6 +65,6 @@ app.post("/api/sendSmsConfirmation", (req, res) => {
 
 // Server setup using PORT from GitHub secret
 const PORT = process.env.PORT || 5001; // Use the GitHub secret for the port
-app.listen(5002, '0.0.0.0', () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log('Server is running on port 5001');
 });
