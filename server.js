@@ -56,6 +56,11 @@ app.post("/api/sendSmsConfirmation", (req, res) => {
     });
 });
 
+// add get
+app.get("/test", (req, res) => {
+  res.send("Server is working!");
+});
+
 // Server setup using PORT from GitHub secret
 const PORT = process.env.PORT || 5001; // Use the GitHub secret for the port
 app.listen(PORT, '0.0.0.0', () => {
