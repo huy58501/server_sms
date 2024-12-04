@@ -7,7 +7,7 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || "https://nails-and-spa.vercel.app", // Use the GitHub secret or fallback to localhost
+  origin: process.env.FRONTEND_URL || "https://tonyinthewild.ca", // Use the GitHub secret or fallback to localhost
   methods: ["GET", "POST"], // Specify allowed methods
   allowedHeaders: ["Content-Type"], // Specify allowed headers
   credentials: true, // Allow credentials (cookies, etc.)
